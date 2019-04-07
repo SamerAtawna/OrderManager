@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Orders</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar>
+   <div class='top'>
+    <ion-searchbar (ionChange)="filterItems()" [(ngModel)]= "searchField" color="tertiary"></ion-searchbar>
+    
+    <ion-icon class='qScan' (click)="scan()" name="qr-scanner" large></ion-icon>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+<ion-item *ngFor="let order of orders" [routerLink]="['./', order.OrderId]">
+  <ion-avatar slot="start">
+      <ion-icon name="list" large></ion-icon>
+  </ion-avatar>
+  
+<ion-grid>
+  <ion-row>
+    <ion-col><ion-label color="primary"><b>Order Id </b></ion-label></ion-col>
+    <ion-col>   {{order.OrderId}}</ion-col>
+  </ion-row>
+  <ion-row>
+      <ion-col><b>Customer Id </b></ion-col>
+      <ion-col>   {{order.CustomerId}}</ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col><b>Name</b></ion-col>
+        <ion-col>   {{order.Name}}</ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col><b>Address </b></ion-col>
+          <ion-col>   {{order.Address}}</ion-col>
+        </ion-row>
+  </ion-grid>
+</ion-item>
+</ion-list>
+
+</ion-content>
